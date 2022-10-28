@@ -5,7 +5,19 @@ const formulario = document.querySelector('#formulario');
 let total = document.querySelector('#total');
 let realizadas = document.querySelector('#realizadas');
 const listaTareas = document.querySelector('#lista-tareas');
-let tareas = [];
+let tareas = [{
+            id: Date.now(),
+            descripcion: Correr,
+            estado: true,
+       },{
+            id: Date.now(),
+            descripcion: Caminar,
+            estado: false,
+       },{
+            id: Date.now(),
+            descripcion: Estudiar,
+            estado: false,
+       }];
 
 //eventos
 
