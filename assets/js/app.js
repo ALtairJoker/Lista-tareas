@@ -82,6 +82,7 @@ function crearHTML() {
             descripcion: Estudiar,
             estado: false,
        }];
+    console.log(tareas);
     let html = '';
     if(tareas.length > 0 ) {
         for(tarea of tareas){
