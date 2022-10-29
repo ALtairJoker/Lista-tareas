@@ -91,8 +91,9 @@ function mostrarError(error) {
 }
     
 function crearHTML() {
-    
-    limpiarHTML();     
+   
+    limpiarHTML();
+
     let html = '';
     if(tareas.length > 0 ) {
         for(tarea of tareas){
@@ -141,4 +142,3 @@ function limpiarHTML() {
         listaTareas.removeChild(listaTareas.firstChild);
     }
 } 
-
