@@ -1,3 +1,4 @@
+
 //variables
 
 const agregar = document.querySelector('#input-submit');
@@ -5,7 +6,22 @@ const formulario = document.querySelector('#formulario');
 let total = document.querySelector('#total');
 let realizadas = document.querySelector('#realizadas');
 const listaTareas = document.querySelector('#lista-tareas');
-let tareas = [];
+let tareas =  [{
+    id: Date.now() ,
+    descripcion: 'Correr',
+    estado: false},
+    {
+        id: Date.now() + 1,
+        descripcion: "Covinar",
+        estado: false,
+      },
+      {
+        id: Date.now() + 2,
+        descripcion: "Aprender JS",
+        estado: true,
+      }];
+
+      sincronizarStorage() 
 
 //eventos
 
@@ -15,8 +31,9 @@ function eventos () {
     agregar.addEventListener('click', agregarTarea);
 
      // Contenido cargado
+
     document.addEventListener('DOMContentLoaded', () => {
-        tareas = JSON.parse( localStorage.getItem('tareas') ) || []  ;
+        tareas = JSON.parse( localStorage.getItem('tareas') );
         crearHTML();
         muestraRealizadas();
 
@@ -24,17 +41,19 @@ function eventos () {
    });
 }
 
-//funciones
-
 function agregarTarea(e) {
+    
     e.preventDefault();
     const tareaText = document.querySelector('#input-tarea').value
-
+   
     // validación
+
     if(tareaText === '') {
         mostrarError('Tarea no puede estar vacia')
         return
-    }// Crear un objeto tarea
+    }
+    // Crear un objeto tarea
+
         const tareaObj = {
             id: Date.now(),
             descripcion: tareaText,
@@ -42,10 +61,14 @@ function agregarTarea(e) {
        }
     
        // Añadirlo a mis tareas
-       tareas = [...tareas, tareaObj];
-    
+
+        tareas = [...tareas, tareaObj];
+       
         // Una vez agregado, mandamos renderizar nuestro HTML
+
         crearHTML();
+
+        //Resetea el imput
 
         formulario.reset ();
 }
@@ -68,7 +91,13 @@ function mostrarError(error) {
 }
     
 function crearHTML() {
+<<<<<<< HEAD
+   
+    limpiarHTML();
+
+=======
     limpiarHTML();     
+>>>>>>> 4ac31053dd74ef2a5c65a8fc0b7084cdd5eff724
     let html = '';
     if(tareas.length > 0 ) {
         for(tarea of tareas){
@@ -89,6 +118,8 @@ function crearHTML() {
     sincronizarStorage();
 }
 
+// Funcion de storage
+
 function sincronizarStorage() {
     localStorage.setItem('tareas', JSON.stringify(tareas));
 };
@@ -103,7 +134,6 @@ function muestraRealizadas () {
     for (tarea of tareas) {
         if (document.getElementById(`${tarea.id}`).checked) {
             tarea.estado = true;
-            
             tareaRealizadas = [...tareaRealizadas,tareas];
         }     
     }
