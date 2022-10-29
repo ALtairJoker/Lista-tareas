@@ -91,13 +91,8 @@ function mostrarError(error) {
 }
     
 function crearHTML() {
-<<<<<<< HEAD
-   
-    limpiarHTML();
-
-=======
+    
     limpiarHTML();     
->>>>>>> 4ac31053dd74ef2a5c65a8fc0b7084cdd5eff724
     let html = '';
     if(tareas.length > 0 ) {
         for(tarea of tareas){
